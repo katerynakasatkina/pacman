@@ -1,0 +1,25 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+ table{
+    width:600 px;
+    height: 200px;
+    margin: auto;
+} 
+
+td{
+    border-bottom: 1px solid yellowgreen;
+    text-align: center;
+    padding: 10px;
+    color: yellowgreen;
+}
+
+h2{
+    text-align: center;
+    color: yellowgreen;
+}
+
+.conteiner{
+width: 1000px;
+margin-left: auto;
+margin-right: auto;
+}

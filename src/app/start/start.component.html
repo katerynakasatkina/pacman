@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>Pacman</h1>
+  <div class="form-group">
+    <label for="name">Enter your name:</label>
+    <input id="name" name="name" class="form-control" placeholder="Name" #heroName />
+  </div>
+  <div class="form-group">
+    <input type="button" class="btn btn-success" value="Start" (click)="startGame(heroName.value)">
+  </div>
+</div>

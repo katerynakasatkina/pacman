@@ -1,0 +1,22 @@
+<h2>Game Heroes</h2>
+
+<div class="conteiner">
+  <table class="table">
+    <tr>
+      <td>Number</td>
+      <td>Name</td>
+      <td>Points</td>
+    </tr>
+    <tr *ngFor="let hero of heroes;let i=index">
+      <td>
+        {{i+1}}
+      </td>
+      <td>
+        {{hero.Name}}
+      </td>
+      <td>
+        {{hero.Points}}
+      </td>
+    </tr>
+  </table>
+</div>
