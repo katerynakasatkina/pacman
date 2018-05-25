@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DllComponentComponent implements OnInit {
 
+  fileToUpload: File = null;
+
   constructor() { }
 
   ngOnInit() {

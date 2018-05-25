@@ -5,12 +5,15 @@ import { HeroesComponent }      from './heroes/heroes.component';
 import { LabyrinthComponent } from './labyrinth/labyrinth.component';
 import { AppComponent } from './app.component';
 import { StartComponent } from './start/start.component';
+import { DllComponentComponent } from './dll-component/dll-component.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'start' },
   { path: 'start', component: StartComponent },
   { path: 'heroes', component: HeroesComponent },
-  { path: 'labyrinth', component: LabyrinthComponent }
+  { path: 'labyrinth', component: LabyrinthComponent },
+  { path:'dll',component:DllComponentComponent}
+
 ];
 
 @NgModule({

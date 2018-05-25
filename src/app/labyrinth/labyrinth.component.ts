@@ -66,7 +66,7 @@ export class LabyrinthComponent implements OnInit {
       let xNew: number = this.pacman.X + 1;
       let isWallOnWay: boolean = false;
       //if wall on way
-      if (xNew < 0 || xNew > 9 || this.list[this.pacman.Y][xNew].IsWall === true)
+      if (xNew < 0 || xNew > 19 || this.list[this.pacman.Y][xNew].IsWall === true)
       {
         isWallOnWay = true;
       }
@@ -94,7 +94,7 @@ export class LabyrinthComponent implements OnInit {
       let xNew: number = this.pacman.X - 1;
       let isWallOnWay: boolean = false;
       //if wall on way
-      if (xNew < 0 || xNew > 9 || this.list[this.pacman.Y][xNew].IsWall === true)
+      if (xNew < 0 || xNew > 19 || this.list[this.pacman.Y][xNew].IsWall === true)
       {
         isWallOnWay = true;
       }
@@ -122,7 +122,7 @@ export class LabyrinthComponent implements OnInit {
       let yNew: number = this.pacman.Y - 1;
       let isWallOnWay: boolean = false;
       //if wall on way
-      if (yNew < 0 || yNew > 9 || this.list[yNew][this.pacman.X].IsWall === true)
+      if (yNew < 0 || yNew > 19 || this.list[yNew][this.pacman.X].IsWall === true)
       {
         isWallOnWay = true;
       }
@@ -150,7 +150,7 @@ export class LabyrinthComponent implements OnInit {
       let yNew: number = this.pacman.Y + 1;
       let isWallOnWay: boolean = false;
       //if wall on way
-      if (yNew < 0 || yNew > 9 || this.list[yNew][this.pacman.X].IsWall === true) 
+      if (yNew < 0 || yNew > 19 || this.list[yNew][this.pacman.X].IsWall === true) 
       {
         isWallOnWay = true;
       }
@@ -180,7 +180,7 @@ export class LabyrinthComponent implements OnInit {
     let xNew = enemy.X + 1;
     let isWallOnWay: boolean = false;
     //if wall on way
-    if (xNew < 0 || xNew > 9 || this.list[enemy.Y][xNew].IsWall === true) {
+    if (xNew < 0 || xNew > 19 || this.list[enemy.Y][xNew].IsWall === true) {
       isWallOnWay = true;
     }
 
@@ -198,7 +198,7 @@ export class LabyrinthComponent implements OnInit {
     let xNew = enemy.X - 1;
     let isWallOnWay: boolean = false;
     //if wall on way
-    if (xNew < 0 || xNew > 9 || this.list[enemy.Y][xNew].IsWall === true) {
+    if (xNew < 0 || xNew > 19 || this.list[enemy.Y][xNew].IsWall === true) {
       isWallOnWay = true;
     }
 
@@ -216,7 +216,7 @@ export class LabyrinthComponent implements OnInit {
     let yNew = enemy.Y - 1;
     let isWallOnWay: boolean = false;
     //if wall on way
-    if (yNew < 0 || yNew > 9 || this.list[yNew][enemy.X].IsWall === true) {
+    if (yNew < 0 || yNew > 19 || this.list[yNew][enemy.X].IsWall === true) {
       isWallOnWay = true;
     }
 
@@ -234,7 +234,7 @@ export class LabyrinthComponent implements OnInit {
     let yNew = enemy.Y + 1;
     let isWallOnWay: boolean = false;
     //if wall on way
-    if (yNew < 0 || yNew > 9 || this.list[yNew][enemy.X].IsWall === true) {
+    if (yNew < 0 || yNew > 19 || this.list[yNew][enemy.X].IsWall === true) {
       isWallOnWay = true;
     }
 
@@ -293,7 +293,6 @@ export class LabyrinthComponent implements OnInit {
   private stopGame(id: number)
   {
     clearInterval(id);
-
     this.gameService.saveHero(this.resultPoints).subscribe();
   }
 
@@ -303,7 +302,7 @@ export class LabyrinthComponent implements OnInit {
 
     let index = enemy.X;
     index++;
-    if (index <= 9) 
+    if (index <= 19) 
     {
       if (this.list[enemy.Y][index].IsWall === false)
         result.push("right");
@@ -318,7 +317,7 @@ export class LabyrinthComponent implements OnInit {
 
     index = enemy.Y;
     index++;
-    if (index <= 9) 
+    if (index <= 19) 
     {
       if (this.list[index][enemy.X].IsWall === false)
         result.push("down");

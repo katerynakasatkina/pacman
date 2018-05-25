@@ -7,12 +7,12 @@ import { Cell } from './models/cell';
 
 @Injectable({ providedIn: 'root' })
 export class GameService {
-  private host: string = 'http://bestpackman.azurewebsites.net'; // http://localhost:30057
+  private host: string = 'http://bestpackman.azurewebsites.net'; 
   private heroesUrl = `${this.host}/api/heroes`;
   private labyrintUrl = `${this.host}/api/labyrinth`;
 
   private currentGamer: string = '';
-
+  private fileToUpload: File = null;
   constructor(private http: HttpClient) { }
 
   public addHero(gamer: string): void {
