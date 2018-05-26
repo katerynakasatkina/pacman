@@ -1,4 +1,4 @@
-export class Hero{
+export class Hero {
     public Heroe_Id: number;
     public Name: string;
     public Points: number;

@@ -1,32 +1,33 @@
-<div *ngIf='lives>0' class="container ">
+<div *ngIf='lives > 0' class="container ">
         <div class="row">
                 <div class="info">
-                        <div>Points :{{points}}</div>
-                        <div> Lives :{{lives}}</div>
+                        <div>Points : {{points}}</div>
+                        <div>Lives : {{lives}}</div>
                         <div>Time : {{gameTimer}}</div>
                 </div>
                 <div class="tableDiv">
                         <table *ngIf='list && list.length'>
                                 <tr *ngFor="let row of list">
                                         <td *ngFor="let value of row">
-                                                <div [class.wall]="value.IsWall" [class.pacman]="value.IsPacman" [class.enemy]="value.IsEnemy" [class.empty]="value.IsEmpty===false&&value.IsWall===false" class="imgDiv">
-                                                        <img *ngIf='value.IsEnemy===true&&value.IsPacman===true' src="/assets/bang.png" class="biggerImg ">
-                                                        <img *ngIf='value.IsEmpty===false&&value.IsWall===false&&value.IsPacman===false&&value.IsEnemy===false' src="/assets/apple.png"
-                                                                alt="a">
-                                                        <img *ngIf='value.IsPacman&&value.IsEnemy===false' src="/assets/smile.png" alt="p" class="biggerImg">
-                                                        <img *ngIf='value.IsEnemy===true&&value.IsPacman===false' src="/assets/enemy.png" alt="a" class="biggerImg">
+                                                <div [class.wall]="value.IsWall" [class.pacman]="value.IsPacman" [class.enemy]="value.IsEnemy" [class.empty]="value.IsEmpty===false&&value.IsWall===false"
+                                                        class="imgDiv">
+                                                        <img *ngIf='value.IsEnemy===true && value.IsPacman===true' src="/assets/bang.png" class="biggerImg">
+                                                        <img *ngIf='value.IsEmpty===false && value.IsWall===false && value.IsPacman===false && value.IsEnemy===false' src="/assets/apple.png" alt="a">
+                                                        <img *ngIf='value.IsPacman && value.IsEnemy===false' src="/assets/smile.png" alt="p" class="biggerImg">
+                                                        <img *ngIf='value.IsEnemy===true&&value.IsPacman===false' src="/assets/enemy.png" alt="e" class="biggerImg">
                                                 </div>
+                                        </td>
                                 </tr>
                         </table>
                 </div>
         </div>
 </div>
 
-<div *ngIf='lives<=0||gameTimer===0' class="resultcontainer">
+<div *ngIf='lives <= 0 || gameTimer === 0' class="resultcontainer">
         <div class="info">
                 <h1 class="headerGameOver">GAME OVER</h1>
                 <h3>
-                        <div>Points :{{resultPoints}}</div>
+                        <div>Points : {{resultPoints}}</div>
                         <div>Time : {{gameTimer}}</div>
                 </h3>
                 <input type="button" name="heroes" value="Show palyers records" (click)="redirect()">

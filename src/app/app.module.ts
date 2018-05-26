@@ -7,15 +7,13 @@ import { HeroesComponent } from './heroes/heroes.component';
 import { LabyrinthComponent } from './labyrinth/labyrinth.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { StartComponent } from './start/start.component';
-import { DllComponentComponent } from './dll-component/dll-component.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeroesComponent,
     LabyrinthComponent,
-    StartComponent,
-    DllComponentComponent
+    StartComponent
   ],
   imports: [
     BrowserModule,

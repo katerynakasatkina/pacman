@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Hero } from './models/hero';
 import { HttpClient, HttpHeaders, HttpResponse, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+import { Hero } from './models/hero';
 import { Cell } from './models/cell';
 
 @Injectable({ providedIn: 'root' })
 export class GameService {
-  private host: string = 'http://bestpackman.azurewebsites.net'; 
+  private host: string = 'https://bestpackman.azurewebsites.net'; 
   private heroesUrl = `${this.host}/api/heroes`;
   private labyrintUrl = `${this.host}/api/labyrinth`;
 
   private currentGamer: string = '';
-  private fileToUpload: File = null;
+  
   constructor(private http: HttpClient) { }
 
   public addHero(gamer: string): void {
