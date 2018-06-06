@@ -4,7 +4,7 @@ import { GameService } from '../game.service';
 import { Observable, of } from 'rxjs';
 
 @Component({
-  selector: 'app-heroes',
+ // selector: 'app-heroes',
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.css']
 })

@@ -1,1 +1,23 @@
+<div class=".container-fluid">
+    <ul>
+        <li>
+            <a class="active" [routerLink]="['/login']">
+                <h3>Pacman</h3>
+            </a>
+        </li>
+
+        <li class="rightalign">
+            <a (click)="Logout()">Logout</a>
+        </li>
+        <li class="rightalign">
+            <a [routerLink]="['/heroes']">Best players</a>
+        </li>
+        <li class="rightalign">
+            <a [routerLink]="['/labyrinth']">Game</a>
+        </li>
+        <li class="rightalign">
+            <a  [routerLink]="['/algorithm']">Program algorithm</a>
+        </li>
+    </ul>
+</div>
 <router-outlet></router-outlet>

@@ -8,7 +8,7 @@ import { GameService } from '../game.service';
 import { Hero } from '../models/hero';
 
 @Component({
-  selector: 'app-labyrinth',
+  //selector: 'app-labyrinth',
   templateUrl: './labyrinth.component.html',
   styleUrls: ['./labyrinth.component.css']
 })

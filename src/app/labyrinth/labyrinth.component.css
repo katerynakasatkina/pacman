@@ -1,5 +1,5 @@
 table{
-    border:1 px solid yellowgreen;
+    border:1 px solid rgb(47, 173, 64);
     margin-left: auto;
     margin-right: auto;
     margin-top:5px;
@@ -9,7 +9,7 @@ table{
 }
 
 td{
-    border: 1px solid yellowgreen;
+    border: 1px solid rgb(47, 173, 64);
     height:30;
     width:30;
     content: '';
@@ -18,6 +18,7 @@ td{
 div{
     width: auto;
     height: auto;
+    padding: 0px;
 }
 
 .imgDiv{
@@ -32,7 +33,7 @@ img{
 }
 
 .wall{
-    background-color: yellowgreen;
+    background-color:rgb(47, 173, 64);
     height: 29px;
     width: 29px;
  }
@@ -61,7 +62,7 @@ img{
 
 .info{
     display: table-cell;
-    color: yellowgreen;
+    color: rgb(47, 173, 64);
 }
 
 .resultcontainer{
