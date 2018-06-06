@@ -1,29 +1,19 @@
 table{
+    width:600px;
+    height:600px;
     border:1 px solid rgb(47, 173, 64);
     margin-left: auto;
     margin-right: auto;
     margin-top:5px;
     text-align: center;
-    width:600px;
-    height:600px;
+    empty-cells: show;
 }
 
 td{
     border: 1px solid rgb(47, 173, 64);
-    height:30;
-    width:30;
-    content: '';
-}
-
-div{
-    width: auto;
-    height: auto;
-    padding: 0px;
-}
-
-.imgDiv{
-    width:29;
-    height:29;
+    min-height:30;
+    min-width: 30;
+    content: ' ';
 }
 
 img{
@@ -32,11 +22,32 @@ img{
     margin: auto;  
 }
 
+div{
+    width: auto;
+    height: auto;
+    padding: 0px;
+}
+
+/* .tdDiv{
+    min-height:30;
+    min-width: 30;
+}
+
+.imgDiv{
+    width:29;
+    height:29;
+} */
+
+div{
+    min-width: 30px;
+    min-height: 30px;
+}
+
 .wall{
     background-color:rgb(47, 173, 64);
     height: 29px;
     width: 29px;
- }
+ } 
 
 .container{
     display: table;
