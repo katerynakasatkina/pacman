@@ -24,7 +24,7 @@ export class GameService {
               +"&FirstName="+encodeURIComponent(user.FirstName)
               +"&LastName="+encodeURIComponent(user.LastName);
     var reqHeader = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded','No-Auth':'True' });
-    return this.http.post(this.host + '/api/User/Register', data, { headers: reqHeader });
+    return this.http.post(this.host + '/api/Account', data, { headers: reqHeader });
   }
 
   public userAuthentication(userName, password) {

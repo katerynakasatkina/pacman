@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <div class="row">
     <div class="col s8 ">
       <div class="card grey lighten-2">
@@ -20,7 +20,54 @@
       </div>
     </div>
   </div>
+</div> -->
+<div class="conteiner">
+  <div class="wrap">
+      <div class="modal-boy">
+          <div class="row">
+            <div>
+              <ngb-tabset>
+                <ngb-tab title="SignIn" class="tabcolor">
+                  <ng-template ngbTabContent>
+                    <div class="row">
+                      <app-sign-in></app-sign-in>
+                    </div>
+                  </ng-template>
+                </ngb-tab>
+      
+                <ngb-tab title="SignUp">
+                  <ng-template ngbTabContent>
+                    <div class="row">
+                      <app-sign-up></app-sign-up>
+                    </div>
+                  </ng-template>
+                </ngb-tab>
+              </ngb-tabset>
+            </div>
+          </div>
+      </div>
+  </div>
+    
 </div>
 
 
-<!-- offset-s2 -->
+
+
+
+
+<!-- <div class="modal-header">
+    <h4 class="modal-title">Modal Title</h4>
+    <button type="button" class="close" aria-label="Close"
+     (click)="activeModal.dismiss('Cross click')">
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>My modal content</p>
+  </div>
+  <div class="modal-footer">
+    <button (click)="activeModal.dismiss('Close clicked')">
+      Close Clicked
+    </button>
+  </div> -->
+
+<!-- <button (click)="openFormModal()">Open Modal</button>  -->

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-root',
@@ -8,9 +10,11 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) { 
+   
+  }
  
-
+ 
   public Logout(): void {
     localStorage.removeItem('userToken');
     this.router.navigate(['/login']);

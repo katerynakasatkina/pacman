@@ -40,7 +40,7 @@ export class LabyrinthComponent implements OnInit {
 
           var id = setInterval((function () {
             this.MoveEnemies(id);
-          }).bind(this), 500);
+          }).bind(this), 700);
 
           var idTime = setInterval((function () {
             this.gameTimer--;
@@ -226,32 +226,149 @@ export class LabyrinthComponent implements OnInit {
     }
   }
 
+  private FindPacmanSquare(enemy: Cell): number {
+    let xPacman=this.pacman.X;
+    let yPacman=this.pacman.Y;
+    let xEnemy=enemy.X;
+    let yEnemy=enemy.Y;
+    if ((xEnemy<xPacman)&&(yEnemy>yPacman))
+      return 1;
+    if ((xEnemy>xPacman)&&(yEnemy>yPacman))
+      return 2;
+    if ((xEnemy>xPacman)&&(yEnemy<yPacman))
+      return 3;
+    if ((xEnemy<xPacman)&&(yEnemy<yPacman))
+      return 4;
+    if ((xEnemy<xPacman)&&(yEnemy===yPacman))
+      return 5;
+    if ((xEnemy===xPacman)&&(yEnemy>yPacman))
+      return 6;
+    if ((xEnemy>xPacman)&&(yEnemy===yPacman))
+      return 7;
+    if ((xEnemy===xPacman)&&(yEnemy<yPacman))
+      return 8;
+  }
+
+  private FindProperWays(pacmanSquare: Number): string[] {
+    let properWays: string[] = new Array;
+    switch (pacmanSquare) {
+      case 1:
+        {
+          properWays.push("up");
+          properWays.push("right");
+          break;
+        }
+      case 2:
+        {
+          properWays.push("up");
+          properWays.push("left");
+          break;
+        }
+      case 3:
+        {
+          properWays.push("down");
+          properWays.push("left");
+          break;
+        }
+      case 4:
+        {
+          properWays.push("down");
+          properWays.push("right");
+          break;
+        }
+      case 5:
+        {
+          properWays.push("right");
+          break;
+        }
+      case 6:
+        {
+          properWays.push("up");
+          break;
+        }
+      case 7:
+        {
+          properWays.push("left");
+          break;
+        }
+      case 8:
+        {
+          properWays.push("down");
+          break;
+        }
+    }
+    return properWays;
+  }
+
+  private FindIntersectionOfWays(avaible: string[], proper: string[]): string[] {
+    let result: string[] = new Array();
+
+    for (let i = 0; i < proper.length; i++) {
+      for (let j = 0; j < avaible.length; j++) {
+        if (proper[i] === avaible[j]) {
+          result.push(proper[i]);
+        }
+      }
+    }
+    if (result.length == 0)
+      return avaible;
+    return result;
+  }
+
   private MoveEnemies(id: number) {
-    let ways: string[] = new Array;
+    let way: string = '';
+    let evaibleWays: string[] = new Array();
+    let properWays: string[] = new Array();
+    let pacmanSquare: number = 0;
+    let isOld: boolean = false;
+    let resultWays: string[] = new Array();
+    let oldDirections: string[] = new Array();
     let wayNumber: number = 0;
 
     for (let i = 0; i < this.enemies.length; i++) {
-      ways = this.findWayForEnemy(this.enemies[i]);
-
-      if (ways.length !== 0) {
-        wayNumber = Math.floor(Math.random() * ((ways.length - 1) - 0 + 1)) + 0;
+      way = '';
+      evaibleWays = this.FindEvaibleWaysForEnemy(this.enemies[i]);
+      pacmanSquare = this.FindPacmanSquare(this.enemies[i]);
+      properWays = this.FindProperWays(pacmanSquare);
+      resultWays=this.FindIntersectionOfWays(evaibleWays,properWays);
+      //if it's possible to move in old direction
+      isOld = this.IsOldWayOk(oldDirections[i],resultWays);
+      if (isOld === true)
+        way = oldDirections[i];
+      else { //else chose random direction
+        wayNumber = Math.floor(Math.random() * ((resultWays.length - 1) - 0 + 1)) + 0;
+        way = resultWays[wayNumber];
+        oldDirections[i] = way;
       }
 
-      if (ways[wayNumber] === "right") {
+      //move enemy
+      if (way === "right") {
         this.moveEnemyRight(this.enemies[i], i);
-      } else if (ways[wayNumber] === "left") {
+      } else if (way === "left") {
         this.moveEnemyLeft(this.enemies[i], i);
-      } else if (ways[wayNumber] === "up") {
+      } else if (way === "up") {
         this.moveEnemyUp(this.enemies[i], i);
-      } else if (ways[wayNumber] === "down") {
+      } else if (way === "down") {
         this.moveEnemyDown(this.enemies[i], i);
-      }
+      } else if (way === '')
+        console.log(way === "");
+
 
       if (this.gameTimer === 0) {
         this.stopGame(id);
       }
     }
     this.IspacmanDead();
+  }
+
+  private IsOldWayOk(oldWay: string, ways: string[]): boolean {
+    if (oldWay === '')
+      return false;
+    for (let i = 0; i < ways.length; i++) {
+      if (ways[i] === oldWay)
+        return true;
+    }
+    return false;
   }
 
   private IspacmanDead() {
@@ -269,7 +386,7 @@ export class LabyrinthComponent implements OnInit {
     this.gameService.saveHero(this.resultPoints).subscribe();
   }
 
-  private findWayForEnemy(enemy: Cell): string[] {
+  private FindEvaibleWaysForEnemy(enemy: Cell): string[] {
     let result: string[] = new Array();
 
     let index = enemy.X;

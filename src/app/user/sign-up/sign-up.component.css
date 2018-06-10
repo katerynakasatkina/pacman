@@ -1,3 +1,16 @@
 form{
-    width: 100%;
+    width:800px;
 }
+
+.registration{
+    text-align: center;
+    color:rgb(47, 173, 64);
+    margin-top :100px;
+}
+
+.error{
+    color: red;
+    font-style: italic;
+}
+input.ng-touched.ng-invalid {border:solid red 2px;}
+input.ng-touched.ng-valid {border:solid green 2px;}

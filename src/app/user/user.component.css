@@ -1,4 +1,4 @@
-div.sm-jumbotron{
+/* div.sm-jumbotron{
     margin: 0px;
     padding: 2rem;
     background-color:rgb(47, 173, 64);
@@ -28,12 +28,12 @@ input.ng-invalid.ng-dirty{
     box-shadow: 0 1px 0 0 #e91e63 !important;
 }
 /*for error div i*/
-div.error-message i{
+/*div.error-message i{
     vertical-align: middle !important;
 }
  
 /*for tab control*/
-.tabs{
+/*.tabs{
     height: 65px;
 }
 .tabs .tab{
@@ -48,4 +48,12 @@ div.error-message i{
  
 .tabs .tab a.active{
     background-color: #fff !important;
+} */
+
+.conteiner{
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
 }
+

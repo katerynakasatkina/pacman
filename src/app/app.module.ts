@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,6 +21,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { GameService } from './game.service';
 import { AlgoralgorithmComponent } from './algoralgorithm/algoralgorithm.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,11 +32,13 @@ import { AlgoralgorithmComponent } from './algoralgorithm/algoralgorithm.compone
     // HomeComponent,
     UserComponent,
     SignInComponent,
-    AlgoralgorithmComponent
+    AlgoralgorithmComponent,
+  
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     NgbModule.forRoot(),
     HttpClientModule,
     ToastrModule.forRoot(),
@@ -52,5 +55,8 @@ import { AlgoralgorithmComponent } from './algoralgorithm/algoralgorithm.compone
     }
   ],
   bootstrap: [AppComponent]
+  // entryComponents: [
+  //   FormModalComponent
+  // ]
 })
 export class AppModule { }

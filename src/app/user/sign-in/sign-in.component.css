@@ -1,0 +1,12 @@
+.AutContainer{
+    margin-top: 20px;
+}
+
+form{
+    width:800px;
+}
+
+.error{
+    color: red;
+    font-style: italic;
+}

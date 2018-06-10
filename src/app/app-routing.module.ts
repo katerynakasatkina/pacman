@@ -23,7 +23,10 @@ export const routes: Routes = [
 
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
+  imports: [ 
+    RouterModule.forRoot(routes) ,
+    // RouterModalModule.forRoot([ { name: 'popup', component: ConfirmDialogComponent}]),
+  ],
   declarations: [],
   exports: [ RouterModule ]
 })
