@@ -29,37 +29,62 @@ export class LabyrinthComponent implements OnInit {
     private router: Router
   ) { }
 
-  public redirect() {
+  public redirectToHeroes() {
     this.router.navigate(['./heroes']);
   }
 
   public ngOnInit(): void {
-    this.transferList = this.gameService.transferlist;
-    this.list = this.transferList.List;
-  
-    this.gameService.getLabyrinth()
-      .subscribe(
-        (list: Cell[][]) => {
-          if (this.list === null) {
+
+    if (this.gameService.isUserField === true) {
+      this.gameService.getTransferList()
+        .subscribe(
+          (transferlist: TransferList) => {
+            this.list = transferlist.List;
+
+            this.setCoordinates();
+            this.findPacmanAndEnemiesCells();
+
+            var id = setInterval((function () {
+              this.MoveEnemies(id);
+            }).bind(this), 700);
+
+            var idTime = setInterval((function () {
+              this.gameTimer--;
+              if (this.gameTimer === 0 || this.lives <= 0) {
+                this.resultPoints = this.points;
+                this.stopGame(idTime);
+              }
+            }).bind(this), 1000);
+          },
+          (err: any) => console.log(err),
+          () => console.log('All done getting TransferList')
+        );
+    }
+
+
+    if (this.gameService.isUserField === false) {
+      this.gameService.getLabyrinth()
+        .subscribe(
+          (list: Cell[][]) => {
             this.list = list;
+
+            this.setCoordinates();
+            this.findPacmanAndEnemiesCells();
+
+            var id = setInterval((function () {
+              this.MoveEnemies(id);
+            }).bind(this), 700);
+
+            var idTime = setInterval((function () {
+              this.gameTimer--;
+              if (this.gameTimer === 0 || this.lives <= 0) {
+                this.resultPoints = this.points;
+                this.stopGame(idTime);
+              }
+            }).bind(this), 1000);
           }
-
-          this.setCoordinates();
-          this.findPacmanAndEnemiesCells();
-
-          var id = setInterval((function () {
-            this.MoveEnemies(id);
-          }).bind(this), 700);
-
-          var idTime = setInterval((function () {
-            this.gameTimer--;
-            if (this.gameTimer === 0 || this.lives <= 0) {
-              this.resultPoints = this.points;
-              this.stopGame(idTime);
-            }
-          }).bind(this), 1000);
-        }
-      );
+        );
+    }
   }
 
   @HostListener('document:keydown', ['$event'])
@@ -393,6 +418,7 @@ export class LabyrinthComponent implements OnInit {
   private stopGame(id: number): void {
     clearInterval(id);
     this.gameService.saveHero(this.resultPoints).subscribe();
+    // this.redirectToHeroes();
   }
 
   private FindEvaibleWaysForEnemy(enemy: Cell): string[] {

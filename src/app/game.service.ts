@@ -10,31 +10,22 @@ import { TransferList } from './models/transferList';
 @Injectable({ providedIn: 'root' })
 export class GameService {
 
-  //private host: string = 'https://bestpackman.azurewebsites.net'; 
-  private host: string = 'http://localhost:42147';
+  private host: string = 'https://bestpackman.azurewebsites.net';
+  //private host: string = 'http://localhost:42147';
   private heroesUrl = `${this.host}/api/hero`;
   private labyrintUrl = `${this.host}/api/labyrinth`;
   private fileUploadUrl=`${this.host}/api/UserMap`;
   private currentGamer: string = '';
-  public transferlist: TransferList=null;
+ // public transferlist: TransferList=null;
+  public isUserField:boolean=false;
+
 
   constructor(private http: HttpClient) { }
 
-  private getTransferList(): Observable<TransferList>{
+  public getTransferList(): Observable<TransferList>{
     return this.http.get<TransferList>(this.fileUploadUrl);
   }
   
-  public initTransferList(): void {
-    this.getTransferList()
-    .subscribe(
-      (transferlist: TransferList) => {
-        this.transferlist = transferlist;
-      },
-      (err:any)=>console.log(err),
-      ()=>console.log('All done getting TransferList')
-    );
-  }
-
   public upload(fileToUpload: any): Observable<Object> {
     let input = new FormData();
     input.append("file", fileToUpload);

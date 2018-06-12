@@ -30,7 +30,9 @@ export class AlgoralgorithmComponent {
   }
 
   public playGameWithUserField(): void {
-      this.gameService.initTransferList();
-      this.router.navigate(['./labyrinth']);
+    //  this.gameService.getTransferList();
+    //   this.gameService.initTransferList();
+    this.gameService.isUserField=true;
+    this.router.navigate(['./labyrinth']);
   }
 }
