@@ -11,7 +11,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { AlgoralgorithmComponent } from './algoralgorithm/algoralgorithm.component';
 
 export const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'user' },
+  { path: '', pathMatch: 'full', redirectTo: 'algorithm' },
   { path: 'heroes', component: HeroesComponent, canActivate: [AuthGuard]  },
   { path: 'labyrinth', component: LabyrinthComponent, canActivate: [AuthGuard]  },
   { path: 'algorithm', component: AlgoralgorithmComponent, canActivate: [AuthGuard] },

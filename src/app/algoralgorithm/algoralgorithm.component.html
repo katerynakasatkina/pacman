@@ -2,10 +2,8 @@
   <p>
     <a href="../../assets/CoreDLL.dll">Download CoreDLL for creating custom field</a>
   </p>
-
   <div class="form-group ">
-    <input #fileInput type="file" class="input-field" />
-    <button (click)="addFile()">Add</button>
+    <input type="file" class="input-field" (change)="uploadField($event.target.files)" />
   </div>
   <div>
     <button class="btn btn-success" (click)="playGameWithUserField()">Play game</button>

@@ -10,7 +10,15 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class AppComponent {
 
   constructor(private router: Router) { }
- 
+
+  public isLoggedIn(): boolean {
+    if (localStorage.getItem('userToken') != null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   public Logout(): void {
     localStorage.removeItem('userToken');
     this.router.navigate(['/login']);

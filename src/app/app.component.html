@@ -7,7 +7,7 @@
         </li>
 
         <li class="rightalign">
-            <a (click)="Logout()">Logout</a>
+            <a (click)="Logout()" *ngIf="isLoggedIn()" href="#">Logout</a>
         </li>
         <li class="rightalign">
             <a [routerLink]="['/heroes']">Best players</a>
@@ -16,7 +16,7 @@
             <a [routerLink]="['/labyrinth']">Game</a>
         </li>
         <li class="rightalign">
-            <a  [routerLink]="['/algorithm']">Program algorithm</a>
+            <a [routerLink]="['/algorithm']">Program algorithm</a>
         </li>
     </ul>
 </div>

@@ -1,38 +1,32 @@
-import { Component, ViewChild } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { GameService } from '../game.service';
 
 @Component({
-  selector: 'app-algoralgorithm',
-  templateUrl: './algoralgorithm.component.html',
-  styleUrls: ['./algoralgorithm.component.css']
+    selector: 'app-algoralgorithm',
+    templateUrl: './algoralgorithm.component.html',
+    styleUrls: ['./algoralgorithm.component.css']
 })
 export class AlgoralgorithmComponent {
- 
-  constructor(
-      private gameService: GameService,
-      private router: Router
-  ) { }
+    
+    constructor(
+        private gameService: GameService,
+        private router: Router
+    ) { }
 
-  @ViewChild("fileInput") fileInput;
+    public uploadField(files: FileList): void {
+        let fileToUpload: File = files.item(0);
 
-  public addFile(): void {
-      let fi = this.fileInput.nativeElement;
-      if (fi.files && fi.files[0]) {
-          let fileToUpload = fi.files[0];
-          this.gameService
-              .upload(fileToUpload)
-              .subscribe(res => {
-                  console.log(res);
-              });
-      }
-  }
+        this.gameService.upload(fileToUpload)
+            .subscribe(res => {
+                console.log(res);
+            }, error => {
+                console.log(error);
+            });
+    }
 
-  public playGameWithUserField(): void {
-    //  this.gameService.getTransferList();
-    //   this.gameService.initTransferList();
-    this.gameService.isUserField=true;
-    this.router.navigate(['./labyrinth']);
-  }
+    public playGameWithUserField(): void {
+        this.gameService.isUserField = true;
+        this.router.navigate(['./labyrinth']);
+    }
 }
