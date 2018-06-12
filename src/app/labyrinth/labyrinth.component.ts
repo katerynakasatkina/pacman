@@ -4,16 +4,17 @@ import { Subscription } from 'rxjs';
 import { interval } from 'rxjs';
 import { map } from 'rxjs/operators'
 import { Cell } from '../models/cell';
-import { GameService } from '../game.service';
 import { Hero } from '../models/hero';
+import { TransferList } from '../models/transferList';
+import { GameService } from '../game.service';
 
 @Component({
-  //selector: 'app-labyrinth',
   templateUrl: './labyrinth.component.html',
   styleUrls: ['./labyrinth.component.css']
 })
 export class LabyrinthComponent implements OnInit {
-
+  public transferList: TransferList;
+  public isCustomAlgorith: boolean = false;
   public list: Cell[][] = new Array();
   public enemies: Cell[] = new Array();
   public pacman: Cell = null;
@@ -23,17 +24,25 @@ export class LabyrinthComponent implements OnInit {
   public lives: number = 3;
   public gameTimer: number = 60;
 
-  constructor(private gameService: GameService, private router: Router) { }
+  constructor(
+    private gameService: GameService,
+    private router: Router
+  ) { }
 
   public redirect() {
     this.router.navigate(['./heroes']);
   }
 
   public ngOnInit(): void {
+    this.transferList = this.gameService.transferlist;
+    this.list = this.transferList.List;
+  
     this.gameService.getLabyrinth()
       .subscribe(
         (list: Cell[][]) => {
-          this.list = list;
+          if (this.list === null) {
+            this.list = list;
+          }
 
           this.setCoordinates();
           this.findPacmanAndEnemiesCells();
@@ -54,7 +63,7 @@ export class LabyrinthComponent implements OnInit {
   }
 
   @HostListener('document:keydown', ['$event'])
-  handleKeyboardEvent(event: KeyboardEvent) {
+  public handleKeyboardEvent(event: KeyboardEvent): void {
     this.key = event.key;
     if (this.key === 'ArrowRight') {
       let xOld: number = this.pacman.X;
@@ -157,7 +166,7 @@ export class LabyrinthComponent implements OnInit {
     }
   }
 
-  private moveEnemyRight(enemy: Cell, index: number) {
+  private moveEnemyRight(enemy: Cell, index: number): void {
     //move right
     let xOld = enemy.X;
     let xNew = enemy.X + 1;
@@ -174,7 +183,7 @@ export class LabyrinthComponent implements OnInit {
     }
   }
 
-  private moveEnemyLeft(enemy: Cell, index: number) {
+  private moveEnemyLeft(enemy: Cell, index: number): void {
     //move right
     let xOld = enemy.X;
     let xNew = enemy.X - 1;
@@ -191,7 +200,7 @@ export class LabyrinthComponent implements OnInit {
     }
   }
 
-  private moveEnemyUp(enemy: Cell, index: number) {
+  private moveEnemyUp(enemy: Cell, index: number): void {
     //move right
     let yOld = enemy.Y;
     let yNew = enemy.Y - 1;
@@ -208,7 +217,7 @@ export class LabyrinthComponent implements OnInit {
     }
   }
 
-  private moveEnemyDown(enemy: Cell, index: number) {
+  private moveEnemyDown(enemy: Cell, index: number): void {
     //move right
     let yOld = enemy.Y;
     let yNew = enemy.Y + 1;
@@ -227,25 +236,25 @@ export class LabyrinthComponent implements OnInit {
   }
 
   private FindPacmanSquare(enemy: Cell): number {
-    let xPacman=this.pacman.X;
-    let yPacman=this.pacman.Y;
-    let xEnemy=enemy.X;
-    let yEnemy=enemy.Y;
-    if ((xEnemy<xPacman)&&(yEnemy>yPacman))
+    let xPacman = this.pacman.X;
+    let yPacman = this.pacman.Y;
+    let xEnemy = enemy.X;
+    let yEnemy = enemy.Y;
+    if ((xEnemy < xPacman) && (yEnemy > yPacman))
       return 1;
-    if ((xEnemy>xPacman)&&(yEnemy>yPacman))
+    if ((xEnemy > xPacman) && (yEnemy > yPacman))
       return 2;
-    if ((xEnemy>xPacman)&&(yEnemy<yPacman))
+    if ((xEnemy > xPacman) && (yEnemy < yPacman))
       return 3;
-    if ((xEnemy<xPacman)&&(yEnemy<yPacman))
+    if ((xEnemy < xPacman) && (yEnemy < yPacman))
       return 4;
-    if ((xEnemy<xPacman)&&(yEnemy===yPacman))
+    if ((xEnemy < xPacman) && (yEnemy === yPacman))
       return 5;
-    if ((xEnemy===xPacman)&&(yEnemy>yPacman))
+    if ((xEnemy === xPacman) && (yEnemy > yPacman))
       return 6;
-    if ((xEnemy>xPacman)&&(yEnemy===yPacman))
+    if ((xEnemy > xPacman) && (yEnemy === yPacman))
       return 7;
-    if ((xEnemy===xPacman)&&(yEnemy<yPacman))
+    if ((xEnemy === xPacman) && (yEnemy < yPacman))
       return 8;
   }
 
@@ -315,7 +324,7 @@ export class LabyrinthComponent implements OnInit {
     return result;
   }
 
-  private MoveEnemies(id: number) {
+  private MoveEnemies(id: number): void {
     let way: string = '';
     let evaibleWays: string[] = new Array();
     let properWays: string[] = new Array();
@@ -330,9 +339,9 @@ export class LabyrinthComponent implements OnInit {
       evaibleWays = this.FindEvaibleWaysForEnemy(this.enemies[i]);
       pacmanSquare = this.FindPacmanSquare(this.enemies[i]);
       properWays = this.FindProperWays(pacmanSquare);
-      resultWays=this.FindIntersectionOfWays(evaibleWays,properWays);
+      resultWays = this.FindIntersectionOfWays(evaibleWays, properWays);
       //if it's possible to move in old direction
-      isOld = this.IsOldWayOk(oldDirections[i],resultWays);
+      isOld = this.IsOldWayOk(oldDirections[i], resultWays);
       if (isOld === true)
         way = oldDirections[i];
       else { //else chose random direction
@@ -371,7 +380,7 @@ export class LabyrinthComponent implements OnInit {
     return false;
   }
 
-  private IspacmanDead() {
+  private IspacmanDead(): void {
     let xPacman: number = this.pacman.X;
     let yPacman: number = this.pacman.Y;
 
@@ -381,7 +390,7 @@ export class LabyrinthComponent implements OnInit {
     }
   }
 
-  private stopGame(id: number) {
+  private stopGame(id: number): void {
     clearInterval(id);
     this.gameService.saveHero(this.resultPoints).subscribe();
   }

@@ -1,0 +1,10 @@
+.conteiner{
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+a{
+    color:  rgb(47, 173, 64);
+}

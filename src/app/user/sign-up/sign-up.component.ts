@@ -10,17 +10,19 @@ import { User } from '../../models/user';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
-  isRegistered:boolean=false;
+  isRegistered: boolean = false;
   user: User;
- // emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
  
-  constructor(private userService: GameService, private toastr: ToastrService) { }
+  constructor(
+    private userService: GameService,
+    private toastr: ToastrService
+  ) { }
  
-  ngOnInit() {
+  public ngOnInit(): void {
     this.resetForm();
   }
  
-  resetForm(form?: NgForm) {
+  protected resetForm(form?: NgForm): void {
     if (form != null)
       form.reset();
     this.user = {
@@ -32,16 +34,13 @@ export class SignUpComponent implements OnInit {
     }
   }
  
-  OnSubmit(form: NgForm) {
+  public OnSubmit(form: NgForm): void {
     this.userService.registerUser(form.value)
       .subscribe((data: any) => {
         if (data.Succeeded == true) {
           this.resetForm(form);
           this.isRegistered=true;
-         console.log("registration syccessful")
         }
-        else
-         console.log("registation error")
       });
   }
  

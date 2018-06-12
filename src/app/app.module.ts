@@ -11,29 +11,23 @@ import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import { LabyrinthComponent } from './labyrinth/labyrinth.component';
 import { AppRoutingModule } from './/app-routing.module';
-// import { StartComponent } from './start/start.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
 import { UserComponent } from './user/user.component';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
-/* import { HomeComponent } from './home/home.component'; */
 import { GameService } from './game.service';
 import { AlgoralgorithmComponent } from './algoralgorithm/algoralgorithm.component';
-
 
 @NgModule({
   declarations: [
     AppComponent,
     HeroesComponent,
     LabyrinthComponent,
-    // StartComponent,
     SignUpComponent,
-    // HomeComponent,
     UserComponent,
     SignInComponent,
     AlgoralgorithmComponent,
-  
   ],
   imports: [
     BrowserModule,
@@ -55,8 +49,5 @@ import { AlgoralgorithmComponent } from './algoralgorithm/algoralgorithm.compone
     }
   ],
   bootstrap: [AppComponent]
-  // entryComponents: [
-  //   FormModalComponent
-  // ]
 })
 export class AppModule { }

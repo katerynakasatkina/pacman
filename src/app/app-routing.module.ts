@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { HeroesComponent } from './heroes/heroes.component';
 import { LabyrinthComponent } from './labyrinth/labyrinth.component';
 import { AppComponent } from './app.component';
-// import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
@@ -16,16 +15,13 @@ export const routes: Routes = [
   { path: 'heroes', component: HeroesComponent, canActivate: [AuthGuard]  },
   { path: 'labyrinth', component: LabyrinthComponent, canActivate: [AuthGuard]  },
   { path: 'algorithm', component: AlgoralgorithmComponent, canActivate: [AuthGuard] },
-  { path: 'signup', component: UserComponent,children: [{ path: '', component: SignUpComponent }] },
-  { path: 'login', component: UserComponent,children: [{ path: '', component: SignInComponent }] },
-  
+  { path: 'signup', component: UserComponent, children: [{ path: '', component: SignUpComponent }] },
+  { path: 'login', component: UserComponent, children: [{ path: '', component: SignInComponent }] },
 ];
-
 
 @NgModule({
   imports: [ 
-    RouterModule.forRoot(routes) ,
-    // RouterModalModule.forRoot([ { name: 'popup', component: ConfirmDialogComponent}]),
+    RouterModule.forRoot(routes)
   ],
   declarations: [],
   exports: [ RouterModule ]

@@ -1,8 +1,8 @@
-<!-- <div class="AutContainer">
+<div class="AutContainer">
   <div *ngIf="isLoginError" class="red-text center error-message">
-    <i class="material-icons">error</i> Incorrect username or password
+    <i class="material-icons">error</i> <span class="error">Incorrect username or password</span>
   </div>
-
+  
   <form #loginForm="ngForm" (ngSubmit)="OnSubmit(UserName.value, Password.value)">
     <div class="form-group">
       <label for="UserName">Username</label>
@@ -12,31 +12,9 @@
       <label for="Password">Password</label>
       <input type="password" class="form-control" #Password ngModel name="Password" placeholder="Password" required>
     </div>
-
-    <div class="input-field col s12">
+  
+    <div>
       <button [disabled]="!loginForm.valid" class="btn btn-success" type="submit">Login</button>
     </div>
   </form>
-</div> -->
-
-
-<div class="AutContainer">
-    <div *ngIf="isLoginError" class="red-text center error-message">
-      <i class="material-icons">error</i> <span class="error">Incorrect username or password</span>
-    </div>
-  
-    <form #loginForm="ngForm" (ngSubmit)="OnSubmit(UserName.value, Password.value)">
-      <div class="form-group">
-        <label for="UserName">Username</label>
-        <input type="text" class="form-control" #UserName ngModel name="UserName" placeholder="Username" required>
-      </div>
-      <div class="form-group">
-        <label for="Password">Password</label>
-        <input type="password" class="form-control" #Password ngModel name="Password" placeholder="Password" required>
-      </div>
-  
-      <div>
-        <button [disabled]="!loginForm.valid" class="btn btn-success" type="submit">Login</button>
-      </div>
-    </form>
-  </div>
+</div>

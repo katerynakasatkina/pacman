@@ -1,26 +1,25 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { Hero } from '../models/hero'
 import { GameService } from '../game.service';
-import { Observable, of } from 'rxjs';
 
 @Component({
- // selector: 'app-heroes',
+  selector: 'app-heroes',
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.css']
 })
-
 export class HeroesComponent implements OnInit {
 
   public heroes: Hero[];
 
   constructor(private gameService: GameService) { }
 
-  ngOnInit()
+  public ngOnInit(): void
   {
     this.getHeroes();
   }
 
-  getHeroes(): void
+  private getHeroes(): void
   {
     this.gameService.getHeroes()
     .subscribe(

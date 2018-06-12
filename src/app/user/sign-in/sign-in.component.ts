@@ -16,16 +16,15 @@ export class SignInComponent {
     private router : Router
   ) { }
 
-  OnSubmit(userName,password){
-   // this.gameService.addHero();
-    this.gameService.userAuthentication(userName,password).subscribe((data : any)=>{
+  public OnSubmit(userName,password): void {
+    this.gameService.userAuthentication(userName, password).subscribe((data : any) => {
      localStorage.setItem('userToken', data.access_token);
-     localStorage.setItem('userName',userName);
+     localStorage.setItem('userName', userName);
      this.router.navigate(['/algorithm']);
    },
    (err : HttpErrorResponse)=>{
      this.isLoginError = true;
    });
  }
-
+ 
 }
