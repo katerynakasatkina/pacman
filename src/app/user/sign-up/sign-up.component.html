@@ -21,7 +21,7 @@
 
   <div class="form-group">
     <label>Email</label>
-    <input class="form-control" type="Email" name="user.Email" [(ngModel)]="user.Email" #email="ngModel" required email />
+    <input class="form-control" type="Email" name="Email" [(ngModel)]="user.Email" #email="ngModel" required email />
     <div [hidden]="email.valid || email.untouched" class="alert alert-danger">
       invalid email
     </div>
