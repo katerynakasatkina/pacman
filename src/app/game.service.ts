@@ -12,6 +12,7 @@ export class GameService {
 
  // private host: string = 'https://bestpackman.azurewebsites.net';
   //private host:string='https://mypacman.azurewebsites.net/';
+
   private host: string = 'http://localhost:42147';
   private heroesUrl = `${this.host}/api/hero`;
   private fileUploadUrl = `${this.host}/api/UserMap`;
