@@ -11,9 +11,9 @@ import { TransferList } from './models/transferList';
 export class GameService {
 
  // private host: string = 'https://bestpackman.azurewebsites.net';
-  //private host:string='https://mypacman.azurewebsites.net/';
+  private host:string='https://mypacman.azurewebsites.net';
 
-  private host: string = 'http://localhost:42147';
+ // private host: string = 'http://localhost:42147';
   private heroesUrl = `${this.host}/api/hero`;
   private fileUploadUrl = `${this.host}/api/UserMap`;
   private labyrintUrl = `${this.host}/api/labyrinth`;
@@ -53,7 +53,7 @@ export class GameService {
   }
 
   public getUserClaims(): Observable<Object> {
-    return this.http.get(this.host + '/api/GetUserClaims');
+    return this.http.get(this.host + '/api/Account');
   }
 
   /** GET heroes from the server */
