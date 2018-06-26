@@ -18,6 +18,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { GameService } from './game.service';
 import { AlgoralgorithmComponent } from './algoralgorithm/algoralgorithm.component';
+import { EmailConfirmationComponent } from './email-confirmation/email-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { AlgoralgorithmComponent } from './algoralgorithm/algoralgorithm.compone
     UserComponent,
     SignInComponent,
     AlgoralgorithmComponent,
+    EmailConfirmationComponent,
   ],
   imports: [
     BrowserModule,

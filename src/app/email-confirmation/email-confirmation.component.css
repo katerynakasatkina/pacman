@@ -1,0 +1,11 @@
+.conteiner{
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+h1{
+    color: rgb(47, 173, 64);
+    font-style: italic;
+}

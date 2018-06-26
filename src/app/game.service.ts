@@ -6,14 +6,15 @@ import { Hero } from './models/hero';
 import { Cell } from './models/cell';
 import { User } from './models/user';
 import { TransferList } from './models/transferList';
+import { EmailCode } from './models/emaiCode';
 
 @Injectable({ providedIn: 'root' })
 export class GameService {
 
  // private host: string = 'https://bestpackman.azurewebsites.net';
-  private host:string='https://mypacman.azurewebsites.net';
+ // private host:string='https://mypacman.azurewebsites.net';
 
- // private host: string = 'http://localhost:42147';
+  private host: string = 'http://localhost:42147';
   private heroesUrl = `${this.host}/api/hero`;
   private fileUploadUrl = `${this.host}/api/UserMap`;
   private labyrintUrl = `${this.host}/api/labyrinth`;
@@ -25,6 +26,10 @@ export class GameService {
 
   public getTransferList(): Observable<TransferList> {
     return this.http.get<TransferList>(`${this.fileUploadUrl}?fieldDll=${this.userFieldName}`);
+  }
+
+  public getEmailCode(code:string):Observable<EmailCode>{
+    return this.http.get<EmailCode>(this.host+'/api/Email?code='+code);
   }
 
   public upload(fileToUpload: File): Observable<Object> {

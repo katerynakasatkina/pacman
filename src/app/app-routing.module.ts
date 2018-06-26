@@ -9,6 +9,7 @@ import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
 import { AuthGuard } from './auth/auth.guard';
 import { AlgoralgorithmComponent } from './algoralgorithm/algoralgorithm.component';
+import { EmailConfirmationComponent } from './email-confirmation/email-confirmation.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'algorithm' },
@@ -17,6 +18,7 @@ export const routes: Routes = [
   { path: 'algorithm', component: AlgoralgorithmComponent, canActivate: [AuthGuard] },
   { path: 'signup', component: UserComponent, children: [{ path: '', component: SignUpComponent }] },
   { path: 'login', component: UserComponent, children: [{ path: '', component: SignInComponent }] },
+  { path: 'emailConfirmation/:code', component: EmailConfirmationComponent}
 ];
 
 @NgModule({
