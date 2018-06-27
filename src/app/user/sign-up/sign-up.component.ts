@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { GameService } from '../../game.service';
 import { User } from '../../models/user';
+import { Router } from '@angular/router';
  
 @Component({
   selector: 'app-sign-up',
@@ -15,7 +16,8 @@ export class SignUpComponent implements OnInit {
  
   constructor(
     private userService: GameService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router : Router
   ) { }
  
   public ngOnInit(): void {
@@ -40,6 +42,7 @@ export class SignUpComponent implements OnInit {
         if (data.Succeeded == true) {
           this.resetForm(form);
           this.isRegistered=true;
+          this.router.navigate(['/emailConfirmation']);
         }
       });
   }

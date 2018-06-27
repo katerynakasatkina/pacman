@@ -7,7 +7,10 @@
                 <ngb-tab title="SignIn" class="tabcolor">
                   <ng-template ngbTabContent>
                     <div class="row">
-                      <app-sign-in></app-sign-in>
+                      <app-sign-in *ngIf='EmailVerified==true'></app-sign-in>
+                      <div *ngIf='EmailVerified==false' >
+                        <h3 class="registration">Please confirm your email!</h3>
+                      </div>
                     </div>
                   </ng-template>
                 </ngb-tab>

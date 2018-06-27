@@ -4,3 +4,10 @@
     margin-right: auto;
     margin-top: 20px;
 }
+
+.registration{
+    text-align: center;
+    color:rgb(47, 173, 64);
+    margin-top :100px;
+    font-style: italic;
+}

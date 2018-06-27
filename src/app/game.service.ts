@@ -10,26 +10,22 @@ import { EmailCode } from './models/emaiCode';
 
 @Injectable({ providedIn: 'root' })
 export class GameService {
-
+  //private host: string = 'http://localhost:42147';
  // private host: string = 'https://bestpackman.azurewebsites.net';
- // private host:string='https://mypacman.azurewebsites.net';
+  private host:string='https://mypacman.azurewebsites.net';
 
-  private host: string = 'http://localhost:42147';
   private heroesUrl = `${this.host}/api/hero`;
   private fileUploadUrl = `${this.host}/api/UserMap`;
   private labyrintUrl = `${this.host}/api/labyrinth`;
   private currentGamer: string = '';
   public isUserField: boolean = false;
   public userFieldName: string;
+  public isEmailVerified:boolean=false;
 
   constructor(private http: HttpClient) { }
 
   public getTransferList(): Observable<TransferList> {
     return this.http.get<TransferList>(`${this.fileUploadUrl}?fieldDll=${this.userFieldName}`);
-  }
-
-  public getEmailCode(code:string):Observable<EmailCode>{
-    return this.http.get<EmailCode>(this.host+'/api/Email?code='+code);
   }
 
   public upload(fileToUpload: File): Observable<Object> {
@@ -64,6 +60,10 @@ export class GameService {
   /** GET heroes from the server */
   public getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.heroesUrl);
+  }
+
+  public getEmailCode(code:string):Observable<EmailCode>{
+    return this.http.get<EmailCode>(this.host+'/api/Email?code='+code);
   }
 
   /** POST new hero to the server */

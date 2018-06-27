@@ -1,7 +1,7 @@
-<div *ngIf='isEmailConfirmed===false' class="conteiner">
-    <h1>Email confirmation in progress! </h1>
+<div *ngIf='!emailCode' class="conteiner">
+    <h1>Please verify your email </h1>
 </div>
-<div *ngIf='isEmailConfirmed===true' class="conteiner">
-    <h1>Email is isEmailConfirmed! </h1>
+<div *ngIf='emailCode' class="conteiner">
+    <h1>Email is confirmed! </h1>
 </div>
 

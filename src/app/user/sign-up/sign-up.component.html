@@ -1,6 +1,6 @@
 <div *ngIf='isRegistered' class="registration">
   Registration Successful!
-  Pleace verify you email!
+  Pleace logIn and verify you email!
 </div>
 <form *ngIf='!isRegistered' #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">
   
