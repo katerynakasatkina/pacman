@@ -11,7 +11,6 @@ import { EmailCode } from './models/emaiCode';
 @Injectable({ providedIn: 'root' })
 export class GameService {
   //private host: string = 'http://localhost:42147';
- // private host: string = 'https://bestpackman.azurewebsites.net';
   private host:string='https://mypacman.azurewebsites.net';
 
   private heroesUrl = `${this.host}/api/hero`;
@@ -21,6 +20,7 @@ export class GameService {
   public isUserField: boolean = false;
   public userFieldName: string;
   public isEmailVerified:boolean=false;
+  public isNewUser:boolean=false;
 
   constructor(private http: HttpClient) { }
 

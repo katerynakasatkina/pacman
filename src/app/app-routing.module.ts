@@ -13,12 +13,12 @@ import { EmailConfirmationComponent } from './email-confirmation/email-confirmat
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'algorithm' },
+  { path: 'emailConfirmation', component: EmailConfirmationComponent},
   { path: 'heroes', component: HeroesComponent, canActivate: [AuthGuard]  },
   { path: 'labyrinth', component: LabyrinthComponent, canActivate: [AuthGuard]  },
   { path: 'algorithm', component: AlgoralgorithmComponent, canActivate: [AuthGuard] },
   { path: 'signup', component: UserComponent, children: [{ path: '', component: SignUpComponent }] },
-  { path: 'login', component: UserComponent, children: [{ path: '', component: SignInComponent }] },
-  { path: 'emailConfirmation', component: EmailConfirmationComponent,canActivate: [AuthGuard]}
+  { path: 'login', component: UserComponent, children: [{ path: '', component: SignInComponent }] }
 ];
 
 @NgModule({

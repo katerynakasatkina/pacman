@@ -11,7 +11,7 @@ import { GameService } from '../game.service';
 export class UserComponent implements OnInit {
 
   public EmailVerified:boolean=false;
-
+  public isNewUser:boolean=false;
 
   constructor(
     private gameService: GameService,
@@ -19,6 +19,7 @@ export class UserComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-   this.EmailVerified=this.gameService.isEmailVerified
+   this.EmailVerified=this.gameService.isEmailVerified;
+   this.isNewUser=this.gameService.isNewUser;
   }
 }
