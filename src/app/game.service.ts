@@ -19,8 +19,6 @@ export class GameService {
   private currentGamer: string = '';
   public isUserField: boolean = false;
   public userFieldName: string;
-  public isEmailVerified:boolean=false;
-  public isNewUser:boolean=false;
 
   constructor(private http: HttpClient) { }
 
