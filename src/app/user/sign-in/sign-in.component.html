@@ -1,6 +1,6 @@
 <div class="AutContainer">
   <div *ngIf="isLoginError" class="red-text center error-message">
-    <i class="material-icons">error</i> <span class="error">Incorrect username or password</span>
+    <i class="material-icons">error</i> <span class="error">Incorrect username or password or email doesn't confirm</span>
   </div>
   
   <form #loginForm="ngForm" (ngSubmit)="OnSubmit(UserName.value, Password.value)">

@@ -1,10 +1,6 @@
 import { Component, OnInit, Output, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { interval } from 'rxjs';
-import { map } from 'rxjs/operators'
 import { Cell } from '../models/cell';
-import { Hero } from '../models/hero';
 import { TransferList } from '../models/transferList';
 import { GameService } from '../game.service';
 

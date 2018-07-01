@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
 import { GameService } from '../../game.service';
 import { User } from '../../models/user';
 import { Router } from '@angular/router';
@@ -16,7 +15,6 @@ export class SignUpComponent implements OnInit {
  
   constructor(
     private userService: GameService,
-    private toastr: ToastrService,
     private router : Router
   ) { }
  

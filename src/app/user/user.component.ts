@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Router } from '@angular/router';
 import { GameService } from '../game.service';
 
 @Component({
@@ -14,8 +12,7 @@ export class UserComponent implements OnInit {
   public isNewUser:boolean=false;
 
   constructor(
-    private gameService: GameService,
-    private router : Router
+    private gameService: GameService
   ) { }
 
   ngOnInit(): void {

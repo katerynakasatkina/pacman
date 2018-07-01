@@ -10,13 +10,12 @@ import { EmailCode } from './models/emaiCode';
 
 @Injectable({ providedIn: 'root' })
 export class GameService {
-  //private host: string = 'http://localhost:42147';
+ // private host: string = 'http://localhost:42147';
   private host:string='https://mypacman.azurewebsites.net';
 
   private heroesUrl = `${this.host}/api/hero`;
   private fileUploadUrl = `${this.host}/api/UserMap`;
   private labyrintUrl = `${this.host}/api/labyrinth`;
-  private currentGamer: string = '';
   public isUserField: boolean = false;
   public userFieldName: string;
   public isEmailVerified:boolean=false;
@@ -63,7 +62,8 @@ export class GameService {
   }
 
   public getEmailCode(code:string):Observable<EmailCode>{
-    return this.http.get<EmailCode>(this.host+'/api/Email?code='+code);
+    var reqHeader = new HttpHeaders({'No-Auth': 'True' });
+    return this.http.get<EmailCode>(this.host+'/api/Email?code='+code,{ headers: reqHeader });
   }
 
   /** POST new hero to the server */
