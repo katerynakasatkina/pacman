@@ -10,6 +10,7 @@ import { GameService } from '../../game.service';
 })
 export class SignInComponent {
   isLoginError : boolean = false;
+  isEmailConfirmed:boolean=false;
 
   constructor(
     private gameService : GameService,

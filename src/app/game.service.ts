@@ -18,8 +18,6 @@ export class GameService {
   private labyrintUrl = `${this.host}/api/labyrinth`;
   public isUserField: boolean = false;
   public userFieldName: string;
-  public isEmailVerified:boolean=false;
-  public isNewUser:boolean=false;
 
   constructor(private http: HttpClient) { }
 

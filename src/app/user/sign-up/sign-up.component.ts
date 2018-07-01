@@ -40,10 +40,8 @@ export class SignUpComponent implements OnInit {
         if (data.Succeeded == true) {
           this.resetForm(form);
           this.isRegistered=true;
-          this.userService.isNewUser=true;
           this.router.navigate(['/emailConfirmation']);
         }
       });
   }
- 
-}
+ }
